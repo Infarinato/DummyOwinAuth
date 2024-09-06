@@ -1,12 +1,7 @@
-﻿using Owin;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DummyOwinAuth
+﻿namespace DummyOwinAuth
 {
+    using Owin;
+
     public static class DummyAuthenticationExtensions
     {
         public static IAppBuilder UseDummyAuthentication(this IAppBuilder app, DummyAuthenticationOptions options)

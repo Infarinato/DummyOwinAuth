@@ -1,23 +1,17 @@
-﻿using Microsoft.Owin;
-using Microsoft.Owin.Security;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace DummyOwinAuth
+﻿namespace DummyOwinAuth
 {
+    using Microsoft.Owin;
+    using Microsoft.Owin.Security;
+
     public class DummyAuthenticationOptions : AuthenticationOptions
     {
-        public DummyAuthenticationOptions(string userName, string userId)
-            : base(Constants.DefaultAuthenticationType)
+        public DummyAuthenticationOptions(string userName, string userId) : base(Constants.DefaultAuthenticationType)
         {
-            Description.Caption = Constants.DefaultAuthenticationType;
-            CallbackPath = new PathString("/signin-dummy");
-            AuthenticationMode = AuthenticationMode.Passive;
-            UserName = userName;
-            UserId = userId;
+            this.Description.Caption = Constants.DefaultAuthenticationType;
+            this.CallbackPath = new PathString("/signin-dummy");
+            this.AuthenticationMode = AuthenticationMode.Passive;
+            this.UserName = userName;
+            this.UserId = userId;
         }
 
         public PathString CallbackPath { get; set; }

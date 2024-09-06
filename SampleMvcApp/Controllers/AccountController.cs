@@ -346,6 +346,12 @@ namespace SampleMvcApp.Controllers
             var user = await UserManager.FindAsync(loginInfo.Login);
             if (user != null)
             {
+                var customClaimType = "http://schemas.hants.gov.uk/2012/01/claims/x-customclaim";
+                user.Claims.Add(new IdentityUserClaim
+                                    {
+                                        ClaimType = customClaimType, 
+                                        ClaimValue = loginInfo.ExternalIdentity.FindFirst(x => x.Type == customClaimType).Value
+                                    });
                 await SignInAsync(user, isPersistent: false);
                 return RedirectToLocal(returnUrl);
             }

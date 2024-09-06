@@ -20,6 +20,7 @@ namespace DummyOwinAuth
             var identity = new ClaimsIdentity(Options.SignInAsAuthenticationType);
             identity.AddClaim(new Claim(ClaimTypes.NameIdentifier, Options.UserId, null, Options.AuthenticationType));
             identity.AddClaim(new Claim(ClaimTypes.Name, Options.UserName));
+            identity.AddClaim(new Claim("http://schemas.hants.gov.uk/2012/01/claims/x-customclaim", "Test"));
 
             var properties = Options.StateDataFormat.Unprotect(Request.Query["state"]);
 
